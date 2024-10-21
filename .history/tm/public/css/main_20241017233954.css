@@ -1,0 +1,134 @@
+body{
+    background-color: #2C666E;
+}
+
+.header{
+    width: 100%;
+    height: 70px;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    background: #2C666E;
+    box-shadow: 0px 7px 7px rgba(0, 0, 0, 0.25);
+}
+
+.header_main_text{
+    color: white;
+    font-size: 32px;
+    position: absolute;
+    left: 40px;
+    top: -7px;
+}
+
+.header_icon{
+    width: 25px;
+    height: 25px;
+    position: absolute;
+    top: 20px;
+    right: 40px;
+    cursor: pointer;
+}
+
+ul{
+    position: absolute;
+    right: 150px;
+    top: 0px;
+}
+
+ul li{
+    display: inline-block;
+    margin: 0 15px;
+    line-height: 40px;
+}
+
+ul li a{
+    position: relative;
+    text-decoration: none;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 700;
+    font-size: (9px, 1px + 7vw,17px);
+    color: #F0EDEE;
+}
+
+ul li a:before{
+    position: absolute;
+    content: '';
+    left: 0;
+    bottom: 0;
+    height: 3px;
+    width: 100%;
+    background: #F0EDEE;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform .4s linear;
+}
+
+ul li a:hover:before{
+    transform-origin: left;
+    transform: scaleX(1);
+
+}
+
+.link_thin{
+    font-weight: 350;
+}
+
+.link_bold{
+    text-decoration: underline;
+}
+
+.project_header{
+    /* background-color: beige; */
+    width: 1195px;
+    height: 30px;
+    position: relative;
+    top: 70px;
+    left: 33px;
+}
+
+.project_header_text{
+    font-size: 28px;
+    color: #F0EDEE;
+}
+
+.project_box{
+    width: 1195px;
+    height: 350px;
+    position: relative;
+    top: 100px;
+    left: 33px;
+    background-color: rgb(53, 138, 84);
+    overflow: auto;
+}
+
+.project_box_section{
+    width: 1190px;
+    height: 30px;
+    border: 3px solid #F0EDEE;
+    color: #F0EDEE;
+    border-radius: 10px;
+}
+
+.project_box_section_text{
+    position: relative;
+    top: -5px;
+    left: 30px;
+}
+
+.project_box_section_folder{
+    width: 25px;
+    height: 25px;
+    position: relative;
+    top: 3px;
+    left: 20px;
+}
+
+.project_box_section_delete{
+    width: 15px;
+    height: 15px;
+    position: absolute;
+    top: 5px;
+    right: 20px;
+}
+

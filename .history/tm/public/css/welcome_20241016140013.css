@@ -1,0 +1,75 @@
+body{
+    background: url("/images/bg.jpg") no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    height: 100%;
+    width: 100%;
+
+}
+
+.register{
+    position: absolute;
+    width: 400px;
+    height: 500px;
+    left: 459px;
+    top: 72px;
+
+    background: rgba(44, 102, 110, 0.7);
+    border-radius: 10px;
+    text-align: center;
+}
+
+.register_header{
+    font-size: 28px;
+    font-weight: bold;
+    position: relative;
+    top: 20px;
+    color: white;
+}
+
+.register_text2{
+    font-size: 17px;
+    font-weight: light;
+    position: relative;
+    top: 10px;
+    color: white;
+
+}
+
+.register_form{
+    position: relative;
+    top: 20px;
+    width: 350px;
+    height: 280px;
+    background-color: aqua;
+    margin: auto;
+}
+
+.register_name{
+    width: 100%;
+    height: 73.3px;
+    background-color: bisque;
+}
+
+.register_name_text{
+    position: absolute;
+    left: 0px;
+}
+
+.register_email{
+    width: 100%;
+    height: 73.3px;
+    background-color: bisque;
+    position: relative;
+    top: 30px;
+}
+
+.register_password{
+    width: 100%;
+    height: 73.3px;
+    background-color: bisque;
+    position: relative;
+    top: 60px;
+}

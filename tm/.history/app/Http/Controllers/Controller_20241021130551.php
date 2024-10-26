@@ -91,7 +91,7 @@ class Controller extends BaseController
     function delete_task(Request $request){
         $edit_id = $request->edit_id;
 
-        tasks::where('unique_id', '=', $edit_id)->delete();
+        tasks::where('project_id', '=', $edit_id)->delete();
 
         return back();
 

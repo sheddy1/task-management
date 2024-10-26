@@ -91,7 +91,7 @@ class Controller extends BaseController
     function delete_task(Request $request){
         $edit_id = $request->edit_id;
 
-        tasks::where('unique_id', '=', $edit_id)->delete();
+        tasks::where('project_id', '=', $edit_id)->delete();
 
         return back();
 
@@ -101,15 +101,11 @@ class Controller extends BaseController
         $selected_value= $_COOKIE['select_project'];
 
         $project = projects::get();
-
         $task = tasks::where('project_id', '=', $selected_value)->get();
-
         $task_name= "";
-
         $project_name= "";
-
+        //session::put('edit_display', 'none');;
         $edit_display1 ="none";
-
         return view('task', [
             'task'=>$task,
             'project'=>$project,
@@ -122,15 +118,11 @@ class Controller extends BaseController
     function project_folder_change(Request $request){
 
         $project = projects::get();
-
         $task = tasks::where('project_id', '=', $request->project_folder_change)->get();
-
         $task_name= "";
-
         $project_name= "";
-
+        //session::put('edit_display', 'none');;
         $edit_display1 ="none";
-
         return view('task', [
             'task'=>$task,
             'project'=>$project,
@@ -175,9 +167,7 @@ class Controller extends BaseController
 
     function history(){
         $project = projects::get();
-
         $history = history::get();
-
         return view('history',
         [
             'project'=>$project,
@@ -187,11 +177,8 @@ class Controller extends BaseController
 
     function history_identify(){
         $selected_value= $_COOKIE['select_project'];
-
         $project = projects::get();
-
         $history = history::where('project_id', '=', $selected_value)->get();
-
         return view('history',
         [
             'project'=>$project,
@@ -201,19 +188,17 @@ class Controller extends BaseController
 
     function task_edit(Request $request){
         $edit_id = $request->edit_id;
-
         $task_name= tasks::where('unique_id', '=', $edit_id)->value('name');
-
         $project_name= tasks::where('unique_id', '=', $edit_id)->value('project_name');
 
+        //session::put('edit_display', 'block');
         session::put('edit_id', $edit_id);
-
         $edit_display1 ="block";
 
         $project = projects::get();
-
         $task = tasks::get();
 
+        //return back();
         return view('task',
         [
             'edit_display' => $edit_display1,
@@ -226,17 +211,11 @@ class Controller extends BaseController
 
     function project_edit1(Request $request){
         $id = $request->edit_project_id;
-
         projects::where('unique_id', $id)->update(['name' => $request->project_name]);
-
         $project = projects::get();
-
         $edit_display1 ="none";
-
         $project_name = "projects::get()";
-
         $edit_id = "";
-
         return view('main', [
             'project'=>$project,
             'edit_display'=>$edit_display1,
@@ -247,17 +226,16 @@ class Controller extends BaseController
 
     function project_edit(Request $request){
         $edit_id = $request->edit_id;
-
         $project_name= projects::where('unique_id', '=', $edit_id)->value('name');
 
+        //session::put('edit_display', 'block');
         session::put('edit_id', $edit_id);
-
         $edit_display1 ="block";
 
         $project = projects::get();
-
         $task = tasks::get();
 
+        //return back();
         return view('main',
         [
             'edit_display' => $edit_display1,
@@ -274,12 +252,10 @@ class Controller extends BaseController
 
         $unique_str = substr(sha1(time()), 0, 5);
 
+        //saving the project name
         $projects = new projects;
-
         $projects->name = $request->project_name;
-
         $projects->unique_id = $unique_str;
-
         $save = $projects->save();
 
         if($save){
@@ -299,14 +275,12 @@ class Controller extends BaseController
         $unique_str = substr(sha1(time()), 0, 5);
 
         echo $request->project_input_select; echo "<br>";
-
         echo $unique_str;
 
         $project_name = projects::where('unique_id', '=', $request->project_input_select)->value('name');
 
         echo $project_name;
 
-        //saviding the data to the tasks database
         $task = new tasks;
         $task->unique_id = $unique_str;
         $task->name = $request->task_name;
@@ -338,9 +312,7 @@ class Controller extends BaseController
             if(Hash::check($request->password, $email->password))
             {
                 session::put('edit_display', 'block');
-
                 $request->session()->put('loggeduser', $email->unique_id);
-
                 return redirect('Main');
             }
             else
@@ -353,7 +325,6 @@ class Controller extends BaseController
     function logout()
     {
         session::forget('loggeduser');;
-
         return redirect('Login');
     }
 }
